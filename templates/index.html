@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>TDI Capstone Project</title>
+    <link href="//cdn.pydata.org/bokeh/release/bokeh-1.0.3.min.css"
+	  rel="stylesheet" type="text/css">
+    <script src="//cdn.pydata.org/bokeh/release/bokeh-1.0.3.min.js"></script>
+	<script src="//www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+    {{ script_1|indent(4)|safe }}
+
+	<style>
+
+    span {
+    color:#919191;
+    }
+    
+	table.sortable {
+		border-collapse: collapse;
+		width: 100%;
+	}
+	table.sortable td {
+		font-size: 18px;
+		padding: 10px 20px;
+		overflow: hidden;
+		word-break: normal;
+		color: #333;
+		border-left: 1px solid #ccc;
+		border-right: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+		.background-color: #FFFFFF;
+		font-family:"Courier New", Courier, monospace !important;
+		text-align: center;
+	}
+
+	table.sortable th {
+		font-weight: bold;
+		font-family:"Courier New", Courier, monospace !important;
+		text-align: center;
+		font-size: 20px;
+		border: 1px solid #ccc;
+		border-bottom: 2px solid #ccc;
+		padding: 10px 20px;
+		word-break: normal;
+		color: #D5D6C4;
+		background-color: #122528; /* header background color*/
+	}
+    
+    table {
+        width: 100%;
+    }
+    table, td {
+    	vertical-align:top;
+    	text-align: left;
+	  	padding: 8px;
+        height:20px;
+        
+    }
+    table.myinput {
+        width: auto;
+        margin-right: 0px;
+        margin-left: auto;
+    }
+
+	table.sortable tablealign {
+		float: right;
+		padding-left: 3%;
+		padding-right: 10%;
+		width: 40%;
+		height: 200px;
+		border-radius: 3px;
+		padding-bottom: 50px;
+	}
+	table.sortable tbody {
+		overflow-y: scroll;
+		overflow-x: hidden;
+		height: 450px;
+		display: block;
+	}
+	table.sortable thead {
+		display:table;
+		width: calc(100% - 17px);
+		table-layout:fixed;
+	}
+	table.sortable tbody tr {
+		table-layout: fixed;
+		display:table;
+		width:100%;
+	}
+
+	table.sortable {
+	  overflow: auto;
+	  border-collapse: collapse;
+	  border-spacing: 0;
+	  border: 1px solid #ddd;
+	}
+
+	/* Sortable tables */
+	table.sortable thead {
+		background-color:#eee;
+		color:#666666;
+		font-weight: bold;
+		cursor: default;
+	}
+	table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+    content: " \25B4\25BE" 
+	}
+	table.sortable tr:nth-child(even){background-color: #f2f2f2}
+	table.sortable tr:nth-child(odd){background-color: #DCD8D8}
+	#ip1 {
+    border-radius: 10px;
+    background: #FCFCFC;
+    width: 100%;
+    height: 100%; 
+	}
+	#ip2 {
+    border-radius: 10px;
+    background: FCFCFC;
+
+    width: 100%;
+    height: 100%;   
+	}
+	#ip3 {
+    border-radius: 10px;
+    background: #FCFCFC;
+
+    width: 100%;
+    height: 100%;   
+	}
+	#ip4 {
+    border-radius: 10px;
+    background: #FCFCFC;
+    width: 100%;
+    height: 100%;
+    
+	}
+    
+
+.container {
+  position: center;
+    width: 100%;
+  max-width: 400px;
+}
+
+
+
+.container .btn {
+  width: 100%;
+  position: center;
+  background-color: #f1f1f1;
+  color: black;
+  font-size: 16px;
+  padding: 16px  30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.container .btn:hover {
+  background-color: black;
+  color: white;
+}
+	</style>
+
+
+
+
+  </head>
+
+  <body style="background-size: 100%;background-image:url(http://dualmonitorswallpaper.com/wp-content/uploads/2018/03/3840x1080-car-wallpaper-hd-hodna-civic-si-9.jpg);">
+
+    <div class="input">
+    	<table id="myinput" style="width:100%;">
+          <form id='input_info' method='post' action='index' >
+      
+                <caption style="font-size: 40px;text-align:left;color:#FFFFFF;font-family:verdana;" >Find your next car</caption>
+
+          <tr >
+            <td >
+              
+			  <input style="width:100%;" type='text' name='input_years' placeholder="How Long you expect to keep it? (years)" id="ip1" /><br />
+              <span id="text_show">e.g. 3</span> 
+            </td>
+            <td>
+
+				<input style="width:100%;" type='text'  name='input_miles' placeholder="Average miles driven per year." id="ip2" /> <br />
+               	<span id="text_show" align="left">e.g. 15000</span> 
+            </td>
+
+            <td >
+            
+			<input style="width:100%;" type='text' name='input_budget' placeholder="Your budget (USD)." id="ip3"  /> <br />
+            <span id="text_show" >e.g. 10000</span> 
+            </td>
+            <td >
+
+			<input style="width:100%;" type='text' name='input_tol' placeholder="Margin (&plusmn;USD)." id="ip4" /> <br />
+            <span id="text_show">e.g. 500</span> 
+            </td>
+            <td>
+			  <div style="text-align:center;" class="container">
+				<button class="btn" type='submit' id="btn" >Button</button>
+			  </div>
+				<script>
+					document.getElementById('btn').onclick = function() {
+						document.getElementById('btn').innerHTML = 'loading ...';
+					}
+				</script>
+				
+            </td>
+          </tr>
+        </table>
+        
+	
+      </form>
+    </div>
+
+    {{ script_2|indent(4)|safe }}
+
+    
+  </body>
+</html>
