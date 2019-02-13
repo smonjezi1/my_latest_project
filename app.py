@@ -10,7 +10,7 @@ from bokeh.embed import components
 from bokeh.models import ColumnDataSource, DatetimeTickFormatter, Range1d
 app = Flask(__name__)
 
-#models to search
+#car models to search
 df_top = dill.load(open('df_top.pkd', 'rb'))
 #model discontinuation check file
 df_top2 = dill.load(open('df_top2.pkd', 'rb'))
